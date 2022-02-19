@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-
 import '../widgets/task_list.dart';
+import 'add_task_screen.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
-// Modal pour ajouter une tache
-  Widget buildButtomSheet(BuildContext context) => Container();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
-          showModalBottomSheet(context: context, builder: buildButtomSheet);
+          showModalBottomSheet(
+              context: context,
+              builder: (context) =>
+                  AddTaskScreen()); // Modal pour ajouter une tache
         },
-        child: Icon(Icons.add),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +38,7 @@ class TaskScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Todoey',
+                  'TodoCode',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50,
@@ -45,7 +46,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '12 tasks',
+                  '12 Tâches',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -56,15 +57,16 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0),
-                  ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
                 ),
-                child: TaskList()),
+              ),
+              child: const TaskList(),
+            ),
           ),
         ],
       ),
